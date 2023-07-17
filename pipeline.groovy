@@ -9,7 +9,12 @@ pipeline {
         
         stage ('deploy') {
             steps {
-                echo "deploy success"
+                sh 'mv /home/centos/workspace/job1/index.html /usr/share/nginx/html/index.html'
+            }
+        }
+        stage ('restart nginx') {
+            steps{
+                sh 'sudo systemctl restart nginx'
             }
         }
 
